@@ -3,9 +3,11 @@ from django.urls import path
 from administrator.authentications.forgotpassword.forgotpassword import ChangePassword, ConfirmPassword, ForgotPasswordMail
 from administrator.authentications.login.views import AuthLoginViewset, AuthLogoutViewset
 from administrator.authentications.resetpassword.resetpassword import ResetPassword
+from administrator.authentications.signup.views import AuthSignupViewset, UserVerification
 from administrator.views import AdminManageProfile
 router = routers.DefaultRouter()
 
+router.register(r'auth/register', AuthSignupViewset)
 router.register(r'auth/login', AuthLoginViewset)
 router.register(r'auth/logout',AuthLogoutViewset)
 router.register(r'auth/resetpassword', ResetPassword)

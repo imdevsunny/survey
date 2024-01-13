@@ -16,17 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-from django.conf import settings
+from django.conf import settings,urls   
+from django.conf.urls import url   
 from django.conf.urls.static import static
 from sitepanel.urls import router as AppRouter
 from administrator.urls import router as AdminRouter
+from django.shortcuts import render
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Survey API')
+    
 
 urlpatterns = [
+    url(r'^$', schema_view),
     path('administrator/', admin.site.urls),
     path('api/admin/', include(AdminRouter.urls)),
     path('api/admin/', include('administrator.urls')),
-    path('api/app/', include(AppRouter.urls)),
-    path('api/app/', include('sitepanel.urls'))
+    path('api/user/', include(AppRouter.urls)),
+    path('api/user/', include('sitepanel.urls'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

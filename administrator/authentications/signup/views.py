@@ -15,7 +15,7 @@ from commonConf.baseViewSet import nBaseViewset, vBaseViewset
 from commonConf.passwordValidator import password_check
 from commonConf.send_email import send_welcome_mail
 from sitepanel.authentications.signup.serializers import UserSerializers
-from sitepanel.models import UserProfile,UserChoice
+from sitepanel.models import UserProfile, UserChoice
 import re
 
 
@@ -75,7 +75,7 @@ class AuthSignupViewset(nBaseViewset):
                 userData.set_password(data["password"])
                 userData.save()
                 userprofile=UserProfile.objects.create(ref_user=userData,verified=0)
-                userprofile.user_type=UserChoice.USER
+                userprofile.user_type=UserChoice.ORGANISATION
                 userprofile.save()
                 context1 = {
                     "subject": "welcome mail",
@@ -92,7 +92,7 @@ class AuthSignupViewset(nBaseViewset):
                 t.setDaemon(True)
                 t.start()               
                 group = Group.objects.get(
-                                    name='user')
+                                    name='organisation')
                 group.user_set.add(userData)
                 # token, created = Token.objects.get_or_create(user=userData)
                 return Response({"email":request.data['email'],"message": "Your registration has been successfully completed.You have just been sent a mail containing verification link.",

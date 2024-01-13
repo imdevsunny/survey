@@ -6,10 +6,13 @@ from django.forms import CharField
 import uuid
 from django.utils.translation import ugettext_lazy as _
 
-
 from commonConf.choices import SocialChoices, UserChoices
+class UserChoice(models.TextChoices):
+    ORGANISATION='ORGANISATION', _('Organisation')
+    USER='USER', _('User')
 
 class UserProfile(models.Model):
+
 
     ref_user = models.OneToOneField(
         User, related_name="user_profile", on_delete=models.CASCADE)
@@ -22,7 +25,7 @@ class UserProfile(models.Model):
     fcm_token = models.TextField(null=True,blank=True)  
     user_type = models.CharField(
         max_length=30,
-        choices=UserChoices.choices(),
+        choices=UserChoice.choices,
         default="unassigned"
     )
     otp = models.IntegerField( null=True, blank=True, default=None)
@@ -32,6 +35,8 @@ class UserProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     class Meta:
         db_table = "user_profile"
+        verbose_name='User Profile'
+        verbose_name_plural='User Profiles'
 
 class UserSocial(models.Model):
     ref_user = models.OneToOneField(
@@ -48,3 +53,7 @@ class UserSocial(models.Model):
 
     class Meta:
         db_table = "user_social"
+
+
+
+
