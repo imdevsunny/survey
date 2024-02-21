@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-e7mgbw^$v-k0g9%rjuisyd$5!#)r#l4wbyqiy3tpp342=gpnjw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [".vercel.app", ".now.sh"]
 
 
 # Application definition
@@ -164,8 +164,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = "static/"
+STATICFILES_DIRS = os.path.join(BASE_DIR, "static"),    
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build","static")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Directory where uploaded media is saved.
 MEDIA_URL = '/media/' # Public URL at the browser
 # Default primary key field type

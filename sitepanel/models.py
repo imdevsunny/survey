@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import CharField
 import uuid
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from commonConf.choices import SocialChoices, UserChoices
 class UserChoice(models.TextChoices):
