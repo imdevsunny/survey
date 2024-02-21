@@ -114,7 +114,7 @@ import dj_database_url
 import os
 
 DATABASES = {
-	"default": dj_database_url.parse('postgres://default:m8vR5hWJeibr@ep-soft-firefly-a44mzjkc.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require')
+	"default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
