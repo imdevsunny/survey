@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'configurations.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
@@ -106,6 +106,18 @@ DATABASES = {
 #         'PORT': env('DATABASE_PORT'),
 #     }
 # }
+
+
+import dj_database_url
+import os
+
+DATABASES = {
+	"default": dj_database_url.parse('postgres://default:m8vR5hWJeibr@ep-soft-firefly-a44mzjkc.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require')
+}
+
+
+
+# psql "postgres://default:m8vR5hWJeibr@ep-soft-firefly-a44mzjkc.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
 
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # EMAIL_HOST = "smtp.gmail.com"
