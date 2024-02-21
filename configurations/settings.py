@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e7mgbw^$v-k0g9%rjuisyd$5!#)r#l4wbyqiy3tpp342=gpnjw'
+# SECRET_KEY = 'django-insecure-e7mgbw^$v-k0g9%rjuisyd$5!#)r#l4wbyqiy3tpp342=gpnjw'
+SECRET_KEY = '$vf8&@nt%b-7euig95yuyj7zmzk3#6fqs!1p+(cm748zo2x5k*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -184,3 +185,11 @@ REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoS
 
 PASSWORD_RESET_TIMEOUT=604800 # 7 days
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10*1024*1024
+
+
+SECURE_HSTS_SECONDS = 60
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
